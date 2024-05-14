@@ -13,11 +13,10 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    - name: Deploy Bicep file
+    - name: Deploy resourcegroup using Bicep file
       uses: azure/arm-deploy@v1
       with:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
-        resourceGroupName: ${{ secrets.AZURE_RG }}
-        template: ./main.bicep
-        parameters: 'storagePrefix=mystore storageSKU=Standard_LRS'
+        template: .\azure\infra\core\resource group\iac\bicep\code\resourcegroup.bicep
+        parameters: .\azure\infra\core\resource group\iac\bicep\param\resourcegroup.bicepparam
         failOnStdErr: false
