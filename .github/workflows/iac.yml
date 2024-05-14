@@ -15,5 +15,5 @@ jobs:
 
     - name: Create Resource Group
       run: |
-       $RESOURCE_GROUP_NAME = az deployment sub create --name demoSubDeployment --location eastus --template-file azure/infra/core/resourcegroup/iac/bicep/code/resourcegroup.bicep --parameters azure/infra/core/resourcegroup/iac/bicep/param/resourcegroup.bicepparam --query 'name' -o tsv
+       RESOURCE_GROUP_NAME=$(az deployment sub create --name demoSubDeployment --location eastus --template-file azure/infra/core/resourcegroup/iac/bicep/code/resourcegroup.bicep --parameters azure/infra/core/resourcegroup/iac/bicep/param/resourcegroup.bicepparam --query name -o tsv)
        echo $RESOURCE_GROUP_NAME
