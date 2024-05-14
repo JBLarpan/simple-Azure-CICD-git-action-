@@ -4,7 +4,9 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-
+    - name: Update system packages
+      run: |
+        sudo apt update && sudo apt upgrade -y
     - name: Checkout code
       uses: actions/checkout@main
 
