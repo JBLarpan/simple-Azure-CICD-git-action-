@@ -14,22 +14,23 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
     - name: Create Resource Group
+      id: create_rg
       run: |
        RESOURCE_GROUP_NAME=$(az deployment sub create --name demoSubDeployment --location eastus \
        --template-file azure/infra/core/resourcegroup/iac/bicep/code/resourcegroup.bicep --parameters azure/infra/core/resourcegroup/iac/bicep/param/resourcegroup.bicepparam --query 'properties.outputs.resourceGroupName.value' -o tsv)
-       echo $RESOURCE_GROUP_NAME
+       echo "::set-output name=rg_name::$RESOURCE_GROUP_NAME"
+
 
     - name: Deploy Linux vm using Bicep file
       id: create_linux_vm
       uses: azure/arm-deploy@v1
       with:
          subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
-         resourceGroupName: $RESOURCE_GROUP_NAME
+         resourceGroupName: ${{ steps.create_rg.outputs.rg_name }}"
          template: azure/infra/core/VM/LinuxVM/iac/bicep/code/simplelinux.bicep
          parameters: azure/infra/core/VM/LinuxVM/iac/bicep/param/simplelinux.bicepparam
          failOnStdErr: false
 
     - name: Save Deployment Output
       run: |
-           DEPLOYMENT_OUTPUT=$(echo "${{ steps.create_linux_vm.outputs.outputs }}")
-           echo $DEPLOYMENT_OUTPUT
+           echo "Deployment Output: ${{ steps.create_linux_vm.outputs.outputs }}"
