@@ -17,7 +17,9 @@ jobs:
       id: create_rg
       run: |
        RESOURCE_GROUP_NAME=$(az deployment sub create --name demoSubDeployment --location eastus \
-       --template-file azure/infra/core/resourcegroup/iac/bicep/code/resourcegroup.bicep --parameters azure/infra/core/resourcegroup/iac/bicep/param/resourcegroup.bicepparam --query 'properties.outputs.resourceGroupName.value' -o tsv)
+       --template-file azure/infra/core/resourcegroup/iac/bicep/code/resourcegroup.bicep \
+       --parameters azure/infra/core/resourcegroup/iac/bicep/param/resourcegroup.bicepparam \
+       --query 'properties.outputs.resourceGroupName.value' -o tsv)
        echo "rg_name=$RESOURCE_GROUP_NAME" >> $GITHUB_OUTPUT
 
 
