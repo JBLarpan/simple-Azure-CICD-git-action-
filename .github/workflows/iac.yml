@@ -22,8 +22,8 @@ jobs:
        --template-file azure/infra/core/resourcegroup/iac/bicep/code/resourcegroup.bicep \
        --parameters azure/infra/core/resourcegroup/iac/bicep/param/resourcegroup.bicepparam \
        --query 'properties.outputs.resourceGroupName.value' -o tsv)
-       echo "rg_name=$RESOURCE_GROUP_NAME" >> $GITHUB_OUTPUT
        echo $RESOURCE_GROUP_NAME
+       echo "echo "rg_name: $RESOURCE_GROUP_NAME" | tee $GITHUB_OUTPUT "
 
 
     - name: Deploy Linux vm using Bicep file
