@@ -71,8 +71,8 @@ var imageReference = {
 var publicIPAddressName = '${vmName}PublicIP'
 var networkInterfaceName = '${vmName}NetInt'
 var osDiskType = 'Standard_LRS'
-var subnetAddressPrefix = '10.1.0.0/24'
-var addressPrefix = '10.1.0.0/16'
+var subnetAddressPrefix = '10.2.0.0/24'
+var addressPrefix = '10.2.0.0/16'
 var linuxConfiguration = {
   disablePasswordAuthentication: true
   ssh: {
