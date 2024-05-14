@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "../azure-apim-bicep-demo-main"
+		},
+		{
+			"path": "../biceps-basic"
+		}
+	],
+	"settings": {}
+}
