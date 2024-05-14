@@ -18,3 +18,12 @@ jobs:
        RESOURCE_GROUP_NAME=$(az deployment sub create --name demoSubDeployment --location eastus \
        --template-file azure/infra/core/resourcegroup/iac/bicep/code/resourcegroup.bicep --parameters azure/infra/core/resourcegroup/iac/bicep/param/resourcegroup.bicepparam --query 'properties.outputs.resourceGroupName.value' -o tsv)
        echo $RESOURCE_GROUP_NAME
+
+    - name: Deploy Bicep file
+      uses: azure/arm-deploy@v1
+      with:
+         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
+         resourceGroupName: $RESOURCE_GROUP_NAME
+         template: azure/infra/core/VM/LinuxVM/iac/bicep/code/simplelinux.bicep
+         parameters: azure/infra/core/VM/LinuxVM/iac/bicep/param/simplelinux.bicepparam
+         failOnStdErr: false
