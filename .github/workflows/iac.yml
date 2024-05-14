@@ -25,13 +25,17 @@ jobs:
        echo $RESOURCE_GROUP_NAME
        echo "echo "rg_name: $RESOURCE_GROUP_NAME" | tee $GITHUB_OUTPUT "
 
+    - name: Save rg group Output
+      run: |
+            echo "resource group Output: ${{steps.create_rg.outputs.rg_name}}"
+
 
     - name: Deploy Linux vm using Bicep file
       id: create_linux_vm
       uses: azure/arm-deploy@v1
       with:
          subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
-         resourceGroupName: ${{ steps.create_rg.outputs.rg_name }}"
+         resourceGroupName: ${{steps.create_rg.outputs.rg_name}}"
          template: azure/infra/core/VM/LinuxVM/iac/bicep/code/simplelinux.bicep
          parameters: azure/infra/core/VM/LinuxVM/iac/bicep/param/simplelinux.bicepparam
          failOnStdErr: false
