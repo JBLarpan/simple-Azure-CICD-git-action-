@@ -15,4 +15,4 @@ jobs:
 
     - name: Create Resource Group
       run: |
-       az deployment sub create --name demoSubDeployment --location eastus --template-file .\azure\infra\core\resourcegroup\iac\bicep\code\resourcegroup.bicep --parameters .\azure\infra\core\resourcegroup\iac\bicep\param\resourcegroup.bicepparam
+       az deployment sub create --name demoSubDeployment --template-file azure/infra/core/resource group/iac/bicep/code/resourcegroup.bicep --parameters azure/infra/core/resource group/iac/bicep/param/resourcegroup.bicepparam
