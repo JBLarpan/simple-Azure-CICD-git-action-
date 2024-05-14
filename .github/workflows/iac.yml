@@ -27,7 +27,7 @@ jobs:
 
     - name: Save rg group Output
       run: |
-            echo "resource group Output: ${{steps.create_rg.outputs.rg_name}}"
+            echo "${{ steps.create_rg.outputs.rg_name }}"
 
 
     - name: Deploy Linux vm using Bicep file
