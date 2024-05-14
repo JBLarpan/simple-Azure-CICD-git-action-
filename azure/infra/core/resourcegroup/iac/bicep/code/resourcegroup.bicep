@@ -9,3 +9,5 @@ resource rg 'Microsoft.Resources/resourceGroups@2018-05-01' = {
   properties: {}
   tags: tags
 }
+
+output resourceGroupName string = rgName
