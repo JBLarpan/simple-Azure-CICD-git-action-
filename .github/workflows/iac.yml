@@ -19,7 +19,8 @@ jobs:
        --template-file azure/infra/core/resourcegroup/iac/bicep/code/resourcegroup.bicep --parameters azure/infra/core/resourcegroup/iac/bicep/param/resourcegroup.bicepparam --query 'properties.outputs.resourceGroupName.value' -o tsv)
        echo $RESOURCE_GROUP_NAME
 
-    - name: Deploy Bicep file
+    - name: Deploy Linux vm using Bicep file
+      id: create_linux_vm
       uses: azure/arm-deploy@v1
       with:
          subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
@@ -27,3 +28,8 @@ jobs:
          template: azure/infra/core/VM/LinuxVM/iac/bicep/code/simplelinux.bicep
          parameters: azure/infra/core/VM/LinuxVM/iac/bicep/param/simplelinux.bicepparam
          failOnStdErr: false
+
+    - name: Save Deployment Output
+      run: |
+           DEPLOYMENT_OUTPUT=$(echo "${{ steps.create_linux_vm.outputs.outputs }}")
+           echo $DEPLOYMENT_OUTPUT
