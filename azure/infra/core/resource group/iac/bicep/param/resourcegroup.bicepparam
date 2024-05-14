@@ -1,5 +1,5 @@
 using '../code/resourcegroup.bicep'
 
-param rgLocation =  /*TODO*/
+param rgLocation =  'eastus'
 
-param rgName =  /*TODO*/
+param rgName =  'git-iac-deployment'

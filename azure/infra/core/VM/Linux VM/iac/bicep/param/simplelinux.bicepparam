@@ -1,5 +1,5 @@
 using '../code/simplelinux.bicep'
 
-param adminPasswordOrKey =  /*TODO*/
+param adminPasswordOrKey =  'arpan'
 
-param adminUsername =  /*TODO*/
+param adminUsername =  'p@$word58'
