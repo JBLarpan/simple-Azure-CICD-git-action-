@@ -18,4 +18,4 @@ az ad sp create-for-rbac --name simple-app --role contributor --scopes /subscrip
   - secrets.AZURE_SUBSCRIPTION (subscription id from azure portal)
   - secrets.SERVER_PASSWORD (server password for the linux admin user)
 
- Note: while updating simpleliux bicep file, need to change the password cause in runtime the password will override with secrets.SERVER_PASSWORD
+ Note: while updating simpleliux bicep file, need notto change the password cause in runtime the password will override with secrets.SERVER_PASSWORD
