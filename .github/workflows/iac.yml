@@ -63,6 +63,8 @@ jobs:
               script: |
                # Change directory to where your script is located
                cd /home/arpan
+               #make tomcat9 executable 
+               chmod +x tomcat9_insatll.sh
                # Run your script
                ./tomcat9_insatll.sh
     
