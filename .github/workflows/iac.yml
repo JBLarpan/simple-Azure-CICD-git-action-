@@ -43,14 +43,13 @@ jobs:
            echo "host name: ${{ steps.create_linux_vm.outputs.hostname }}"
            echo "admin user name: ${{ steps.create_linux_vm.outputs.adminUsername }}"
 
-
-    -name:      
-     run: scp -o StrictHostKeyChecking=no -P ${{ secrets.SSH_PORT }} azure/infra/core/VM/LinuxVM/iac/bicep/scripts/tomcat9_insatll.sh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:~/tomcat9_install.sh
-     env:
-      SSH_PORT: 22
-      SSH_USERNAME: ${{ steps.create_linux_vm.outputs.adminUsername }}
-      SSH_HOST: ${{ steps.create_linux_vm.outputs.hostname }}
-      SSH_KEY: ${{ secrets.SERVER_PASSWORD }}
+    - name:  scp tomact9 script    
+      run: scp -o StrictHostKeyChecking=no -P ${{ secrets.SSH_PORT }} azure/infra/core/VM/LinuxVM/iac/bicep/scripts/tomcat9_insatll.sh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:~/tomcat9_install.sh
+      env:
+       SSH_PORT: 22
+       SSH_USERNAME: ${{ steps.create_linux_vm.outputs.adminUsername }}
+       SSH_HOST: ${{ steps.create_linux_vm.outputs.hostname }}
+       SSH_KEY: ${{ secrets.SERVER_PASSWORD }}
 
 
      
