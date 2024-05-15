@@ -127,33 +127,33 @@ resource networkSecurityGroup 'Microsoft.Network/networkSecurityGroups@2021-05-0
   location: location
   properties: {
     securityRules: [
-{
-name: 'AllowSSH'
-properties: {
-protocol: 'Tcp'
-sourcePortRange: '*'
-destinationPortRange: '22'
-sourceAddressPrefix: '*'
-destinationAddressPrefix: '*'
-access: 'Allow'
-priority: 100
-direction: 'Inbound'
-}
-}
-{
-name: 'AllowWebTraffic'
-properties: {
-protocol: 'Tcp'
-sourcePortRange: '*'
-destinationPortRange: '8080'
-sourceAddressPrefix: '*'
-destinationAddressPrefix: '*'
-access: 'Allow'
-priority: 110
-direction: 'Inbound'
-}
-}
-]
+     {
+       name: 'AllowSSH'
+       properties: {
+          protocol: 'Tcp'
+          sourcePortRange: '*'
+          destinationPortRange: '22'
+          sourceAddressPrefix: '*'
+          destinationAddressPrefix: '*'
+          access: 'Allow'
+          priority: 100
+          direction: 'Inbound'
+        }
+     }
+     {
+       name: 'AllowWebTraffic'
+       properties: {
+         protocol: 'Tcp'
+         sourcePortRange: '*'
+         destinationPortRange: '8080'
+         sourceAddressPrefix: '*'
+         destinationAddressPrefix: '*'
+         access: 'Allow'
+         priority: 110
+         direction: 'Inbound'
+        }
+      }
+    ]
   }
 }
 

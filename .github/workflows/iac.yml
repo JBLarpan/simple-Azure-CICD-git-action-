@@ -42,3 +42,30 @@ jobs:
       run: |
            echo "host name: ${{ steps.create_linux_vm.outputs.hostname }}"
            echo "admin user name: ${{ steps.create_linux_vm.outputs.adminUsername }}"
+    
+    - name: Copy script to Linux server
+      uses: appleboy/scp-action@master
+      with:
+             host: ${{ steps.create_linux_vm.outputs.adminUsername }}
+             username: ${{ steps.create_linux_vm.outputs.hostname }}
+             password: ${{ secrets.SERVER_PASSWORD }}
+             port: 22 # Default SSH port is 22
+             source: azure/infra/core/VM/LinuxVM/iac/bicep/scripts/tomcat9_insatll.sh # Path to your script in the GitHub repository
+             target: /home/arpan/tomcat9_insatll.sh # Path where you want to copy the script on the Linux server
+     
+    - name: SSH into Linux server and run script
+      uses: appleboy/ssh-action@master
+      with:
+              host: ${{ steps.create_linux_vm.outputs.adminUsername }}
+              username: ${{ steps.create_linux_vm.outputs.hostname }}
+              password: ${{ secrets.SERVER_PASSWORD }}
+              port: 22 # Default SSH port is 22
+              script: |
+               # Change directory to where your script is located
+               cd /home/arpan
+               # Run your script
+               ./tomcat9_insatll.sh
+    
+    - name: Save Deployment Output
+      run: |
+        echo "tmocat9 url: http://${{ steps.create_linux_vm.outputs.hostname }}:8080"
