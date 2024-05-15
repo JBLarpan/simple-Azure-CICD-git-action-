@@ -62,7 +62,7 @@ jobs:
               port: 22 # Default SSH port is 22
               script: |
                # Change directory to where your script is located
-               cd /home/arpan
+               cd /home/arpan/azure/infra/core/VM/LinuxVM/iac/bicep/scripts
                #make tomcat9 executable 
                chmod +x tomcat9_insatll.sh
                # Run your script
