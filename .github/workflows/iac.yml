@@ -15,7 +15,7 @@ jobs:
 
     - name: Update parameter file
       run: |
-          sed -i "s/param adminPasswordOrKey = .*/param adminPasswordOrKey = '${{ secrets.SERVER_PASSWORD }}'/g" simplelinux.bicepparam
+          sed -i "s/param adminPasswordOrKey = .*/param adminPasswordOrKey = '${{ secrets.SERVER_PASSWORD }}'/g" azure/infra/core/VM/LinuxVM/iac/bicep/param/simplelinux.bicepparam
 
     - name: Create Resource Group
       id: create_rg
