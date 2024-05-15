@@ -1,8 +1,13 @@
 # simple-Azure-CICD-git-action-
 Simple IAC,CI-CD operation through git actions.
 It will create an azure linux vm 
-then install web server 
+then install apache tomcat web server 
 and then access from prot 8080.
+
+first look of your web server will be 
+
+![image](https://github.com/JBLarpan/simple-Azure-CICD-git-action-/assets/52735073/c740b2d0-9b19-4794-a0d0-79ee4478caf5)
+
 
 point to remeber: 
 - make connection to azure on subscription level :
