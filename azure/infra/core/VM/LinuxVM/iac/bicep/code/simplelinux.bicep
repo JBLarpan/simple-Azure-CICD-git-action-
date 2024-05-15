@@ -246,8 +246,8 @@ resource vmExtension 'Microsoft.Compute/virtualMachines/extensions@2022-03-01' =
   }
 }
 
-//output adminUsername string = adminUsername
-//output hostname string = publicIPAddress.properties.dnsSettings.fqdn
-output sshCommand string = 'ssh ${adminUsername}@${publicIPAddress.properties.dnsSettings.fqdn}'
+output adminUsername string = adminUsername
+output hostname string = publicIPAddress.properties.dnsSettings.fqdn
+//output sshCommand string = 'ssh ${adminUsername}@${publicIPAddress.properties.dnsSettings.fqdn}'
 
 
