@@ -7,6 +7,10 @@ jobs:
    
     - name: Checkout code
       uses: actions/checkout@main
+    
+    - name: APT Update
+      run: |
+        sudo apt-get update
 
     - name: Log into Azure
       uses: azure/login@v1
