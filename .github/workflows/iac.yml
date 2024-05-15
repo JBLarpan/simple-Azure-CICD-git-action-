@@ -58,7 +58,7 @@ jobs:
              username: ${{ steps.create_linux_vm.outputs.adminUsername }}
              password: ${{ secrets.SERVER_PASSWORD }}
              port: 22 # Default SSH port is 22
-             source: "azure/infra/core/VM/LinuxVM/iac/bicep/scripts/tomcat9_insatll.sh" # Path to your script in the GitHub repository
+             source: "azure/infra/core/VM/LinuxVM/iac/bicep/scripts/tomcat9_install.sh" # Path to your script in the GitHub repository
              target: "/home/arpan/"  # Path where you want to copy the script on the Linux server
      
     - name: SSH into Linux server and run script
@@ -72,9 +72,9 @@ jobs:
                # Change directory to where your script is located
                cd /home/arpan/azure/infra/core/VM/LinuxVM/iac/bicep/scripts
                #make tomcat9 executable 
-               chmod +x tomcat9_insatll.sh
+               chmod +x tomcat9_install.sh
                # Run your script
-               ./tomcat9_insatll.sh
+               ./tomcat9_install.sh
     
     - name: Save Deployment Output
       run: |

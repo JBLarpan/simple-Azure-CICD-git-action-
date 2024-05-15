@@ -1,6 +1,6 @@
 # simple-Azure-CICD-git-action-
-Simple IAC,CI-CD operation through git actions.
-It will create an azure linux vm 
+Simple IAC,CI-CD operation through git actions and bicep as IAC.
+It will create a resource group then a azure linux vm in the resource group  
 then install apache tomcat web server 
 and then access from prot 8080.
 
