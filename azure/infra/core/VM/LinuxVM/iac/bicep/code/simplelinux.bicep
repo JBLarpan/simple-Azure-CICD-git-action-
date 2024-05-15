@@ -152,10 +152,20 @@ resource virtualNetwork 'Microsoft.Network/virtualNetworks@2021-05-01' = {
         addressPrefix
       ]
     }
+    subnets: [
+      {
+        name: subnetName
+        properties:{
+          addressPrefix: subnetAddressPrefix
+          privateEndpointNetworkPolicies: 'Enabled'
+          privateLinkServiceNetworkPolicies: 'Enabled'
+        }
+      }
+    ]
   }
 }
 
-resource subnet 'Microsoft.Network/virtualNetworks/subnets@2021-05-01' = {
+/*resource subnet 'Microsoft.Network/virtualNetworks/subnets@2021-05-01' = {
   parent: virtualNetwork
   name: subnetName
   properties: {
@@ -163,7 +173,7 @@ resource subnet 'Microsoft.Network/virtualNetworks/subnets@2021-05-01' = {
     privateEndpointNetworkPolicies: 'Enabled'
     privateLinkServiceNetworkPolicies: 'Enabled'
   }
-}
+}*/
 
 resource publicIPAddress 'Microsoft.Network/publicIPAddresses@2021-05-01' = {
   name: publicIPAddressName
@@ -235,8 +245,8 @@ resource vmExtension 'Microsoft.Compute/virtualMachines/extensions@2022-03-01' =
   }
 }
 
-output adminUsername string = adminUsername
-output hostname string = publicIPAddress.properties.dnsSettings.fqdn
+//output adminUsername string = adminUsername
+//output hostname string = publicIPAddress.properties.dnsSettings.fqdn
 output sshCommand string = 'ssh ${adminUsername}@${publicIPAddress.properties.dnsSettings.fqdn}'
 
 
