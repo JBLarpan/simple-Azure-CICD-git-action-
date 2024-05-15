@@ -51,7 +51,7 @@ jobs:
              password: ${{ secrets.SERVER_PASSWORD }}
              port: 22 # Default SSH port is 22
              source: azure/infra/core/VM/LinuxVM/iac/bicep/scripts/tomcat9_insatll.sh # Path to your script in the GitHub repository
-             target: /home/arpan/tomcat9_insatll.sh # Path where you want to copy the script on the Linux server
+             target: /home/arpan/   # Path where you want to copy the script on the Linux server
      
     - name: SSH into Linux server and run script
       uses: appleboy/ssh-action@master
