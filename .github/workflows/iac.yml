@@ -46,8 +46,8 @@ jobs:
     - name: Copy script to Linux server
       uses: appleboy/scp-action@master
       with:
-             host: ${{ steps.create_linux_vm.outputs.adminUsername }}
-             username: ${{ steps.create_linux_vm.outputs.hostname }}
+             host: ${{ steps.create_linux_vm.outputs.hostname }}
+             username: ${{ steps.create_linux_vm.outputs.adminUsername }}
              password: ${{ secrets.SERVER_PASSWORD }}
              port: 22 # Default SSH port is 22
              source: azure/infra/core/VM/LinuxVM/iac/bicep/scripts/tomcat9_insatll.sh # Path to your script in the GitHub repository
@@ -56,8 +56,8 @@ jobs:
     - name: SSH into Linux server and run script
       uses: appleboy/ssh-action@master
       with:
-              host: ${{ steps.create_linux_vm.outputs.adminUsername }}
-              username: ${{ steps.create_linux_vm.outputs.hostname }}
+              host: ${{ steps.create_linux_vm.outputs.hostname }}
+              username: ${{ steps.create_linux_vm.outputs.adminUsername }}
               password: ${{ secrets.SERVER_PASSWORD }}
               port: 22 # Default SSH port is 22
               script: |
