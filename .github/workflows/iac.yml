@@ -40,4 +40,5 @@ jobs:
 
     - name: Save Deployment Output
       run: |
-           echo "Deployment Output: ${{ steps.create_linux_vm.outputs.sshCommand }}"
+           echo "host name: ${{ steps.create_linux_vm.outputs.hostname }}"
+           echo "admin user name: ${{ steps.create_linux_vm.outputs.adminUsername }}"
