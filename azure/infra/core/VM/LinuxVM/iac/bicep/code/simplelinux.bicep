@@ -140,6 +140,19 @@ resource networkSecurityGroup 'Microsoft.Network/networkSecurityGroups@2021-05-0
           destinationPortRange: '22'
         }
       }
+      {
+        name: 'Tomcat8080'
+        properties: {
+          priority: 1000
+          protocol: 'Tcp'
+          access: 'Allow'
+          direction: 'Inbound'
+          sourceAddressPrefix: '*'
+          sourcePortRange: '*'
+          destinationAddressPrefix: '*'
+          destinationPortRange: '8080'
+  }
+}
     ]
   }
 }
