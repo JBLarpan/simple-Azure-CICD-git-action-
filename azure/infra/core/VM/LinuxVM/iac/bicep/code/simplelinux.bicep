@@ -127,35 +127,36 @@ resource networkSecurityGroup 'Microsoft.Network/networkSecurityGroups@2021-05-0
   location: location
   properties: {
     securityRules: [
-      {
-        name: 'SSH'
-        properties: {
-          priority: 1000
-          protocol: 'Tcp'
-          access: 'Allow'
-          direction: 'Inbound'
-          sourceAddressPrefix: '*'
-          sourcePortRange: '*'
-          destinationAddressPrefix: '*'
-          destinationPortRange: '22'
-        }
-      }
-      {
-        name: 'Tomcat8080'
-        properties: {
-          priority: 1000
-          protocol: 'Tcp'
-          access: 'Allow'
-          direction: 'Inbound'
-          sourceAddressPrefix: '*'
-          sourcePortRange: '*'
-          destinationAddressPrefix: '*'
-          destinationPortRange: '8080'
+{
+name: 'AllowSSH'
+properties: {
+protocol: 'Tcp'
+sourcePortRange: '*'
+destinationPortRange: '22'
+sourceAddressPrefix: '*'
+destinationAddressPrefix: '*'
+access: 'Allow'
+priority: 100
+direction: 'Inbound'
+}
+}
+{
+name: 'AllowWebTraffic'
+properties: {
+protocol: 'Tcp'
+sourcePortRange: '*'
+destinationPortRange: '8080'
+sourceAddressPrefix: '*'
+destinationAddressPrefix: '*'
+access: 'Allow'
+priority: 110
+direction: 'Inbound'
+}
+}
+]
   }
 }
-    ]
-  }
-}
+
 
 resource virtualNetwork 'Microsoft.Network/virtualNetworks@2021-05-01' = {
   name: virtualNetworkName
