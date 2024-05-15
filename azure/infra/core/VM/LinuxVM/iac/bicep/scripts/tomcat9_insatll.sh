@@ -4,7 +4,7 @@
 sudo apt update
 
 # Install Apache Tomcat
-sudo apt install tomcat9
+sudo apt install -y tomcat9
 
 # Create a directory for the "Hello World" content (if it doesn't exist)
 sudo mkdir -p /var/www/html
